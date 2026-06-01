@@ -171,8 +171,43 @@ void GRAPH_SYSTEM::createRandomGraph_DoubleCircles(int n)
     float dz = 5.0;
     float r = 15; // radius
     float d = 10; // layer distance
+    int R = r + d;
     float offset_x = 90.;
     float offset_z = 15.;
+    const float PI = 3.14159265358979f;
+
+    srand((unsigned)time(NULL));
+
+    vector<int> innerRing(n, -1);
+    vector<int> outerRing(n, -1);
+
+    // 1. place both rings (regular spacing)
+    for (int i = 0; i < n; ++i) {
+        float theta = 2.0f * PI * i / n;
+        innerRing[i] = addNode(offset_x + r * cosf(theta), 0.0f, offset_z + r * sinf(theta));
+        outerRing[i] = addNode(offset_x + R * cosf(theta), 0.0f, offset_z + R * sinf(theta));
+    }
+
+    // 2. for each inner node, pick a random *close* outer node.
+    //    "Close" = the chord A->B doesn't cross the inner circle,
+    //    i.e. (A - C) . (B - A) >= 0.
+    for (int i = 0; i < n; ++i) {
+        const vector3& A = mNodeArr_Pool[innerRing[i]].p;
+        float ax = A.x - offset_x, az = A.z - offset_z;
+
+        // try random outer nodes until one satisfies the constraint
+        for (int tries = 0; tries < 100; ++tries) {
+            int j = rand() % n;
+            const vector3& B = mNodeArr_Pool[outerRing[j]].p;
+            float bax = B.x - A.x;
+            float baz = B.z - A.z;
+
+            if (ax * bax + az * baz >= 0.0f) {
+                addEdge(innerRing[i], outerRing[j]);
+                break;
+            }
+        }
+    }
     //
     // modify and add your code heres
     //
