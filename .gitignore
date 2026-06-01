@@ -1,0 +1,57 @@
+# ---- Visual Studio build output ----
+[Dd]ebug/
+[Rr]elease/
+bin/[Dd]ebug/
+bin/[Rr]elease/
+x64/
+x86/
+Win32/
+
+# ---- VS / MSBuild intermediate files ----
+*.obj
+*.o
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+*.exp
+*.idb
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+*.log
+
+# ---- VS user/IDE state (NOT shared) ----
+.vs/
+ipch/
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.user
+*.aps
+*.cachefile
+*.VC.db
+*.VC.opendb
+
+# ---- VS upgrade reports ----
+_UpgradeReport_Files/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# ---- Backups / temp ----
+*~
+*.bak
+*.tmp
+~$*
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Old project files we don't need to track ----
+*.sln.old
+*.suo.old
+*.vcproj
+*.vcproj.*.user
