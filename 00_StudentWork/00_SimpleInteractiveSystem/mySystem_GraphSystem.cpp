@@ -144,7 +144,7 @@ void GRAPH_SYSTEM::createDefaultGraph( )
     reset( );
 
     float offset_x = 90.;
-    float offset_z = 15.;
+    float offset_z = 65.;
 
     int n_0 = addNode(offset_x + 0.0, 0.0, offset_z + 0.0 );
     cout << "n_0:"<< n_0 << endl;
@@ -173,7 +173,7 @@ void GRAPH_SYSTEM::createRandomGraph_DoubleCircles(int n)
     float d = 10; // layer distance
     int R = r + d;
     float offset_x = 90.;
-    float offset_z = 15.;
+    float offset_z = 65.;
     const float PI = 3.14159265358979f;
 
     srand((unsigned)time(NULL));
@@ -217,7 +217,7 @@ void GRAPH_SYSTEM::createNet_Circular( int n, int num_layers )
     float r = 5; // radius
     float d = 5; // layer distance 
     float offset_x = 90.;
-    float offset_z = 30.;
+    float offset_z = 60.;
     const float PI = 3.14159265358979f;
 
     vector<vector<int>> node_idx;
@@ -259,8 +259,8 @@ void GRAPH_SYSTEM::createNet_Square( int n, int num_layers )
     float dz = 5.0;
     float r = 5; // radius
     float d = 5; // layer distance 
-    float offset_x = 5.;
-    float offset_z = 5.;
+    float offset_x = 20.;
+    float offset_z = 20.;
     vector<int> last_nodes(n + num_layers*2 - 2);
     for (int i = 0; i < n + num_layers*2 - 2;i++) {
         int n_l;
@@ -289,7 +289,7 @@ void GRAPH_SYSTEM::createNet_RadicalCircular( int n ) {
     reset( );
 
     float offset_x = 90.0;
-    float offset_z = 15.0;
+    float offset_z = 65.0;
     const float PI = 3.14159265358979f;
     float r = 15; // radius
 
@@ -355,24 +355,23 @@ int GRAPH_SYSTEM::addEdge( int nodeID_0, int nodeID_1 )
 
 void GRAPH_SYSTEM::askForInput( )
 {
-    //
-    // modify and add your code heres
-    //
     cout << "GRAPH_SYSTEM" << endl;
     cout << "Key usage:" << endl;
-    cout << "1: create a default graph" << endl;
-    cout << "2: create a graph ..." << endl;
-    cout << "3: create a graph ..." << endl;
-    cout << "4: create a graph ..." << endl;
-    cout << "5: create a graph ..." << endl;
-    cout << "Delete: delete a selected node and all the edges incident to it" << endl;
-    cout << "Spacebar: Change operation" << endl;
+    cout << "1: create the default graph" << endl;
+    cout << "2: create a graph of connected circles (12 nodes per layer, 6 layers)" << endl;
+    cout << "3: create a graph of squares (n = 15, 5 layers, hollow center)" << endl;
+    cout << "4: create a radial graph (1 center node + 24 outer nodes)" << endl;
+    cout << "5: create a random graph of double circles (24 nodes per circle)" << endl;
+    cout << "<: decrease the number of nodes per circle for the double-circles graph (min 3)" << endl;
+    cout << ">: increase the number of nodes per circle for the double-circles graph (max 36)" << endl;
+    cout << "Delete: delete the selected node and all the edges incident to it" << endl;
+    cout << "d / D : toggle automatic deletion of nodes (250 ms per node)" << endl;
+    cout << "Spacebar: change operation (SHORTEST_PATH -> NODE_DEPTH -> ADD_EDGE)" << endl;
     cout << " " << endl;
-    cout << "Use the mouse to select nodes and add edges" << endl;
-    cout << "Click the left button to select/unselect or create an edge" << endl;
+    cout << "Use the mouse to select nodes." << endl;
+    cout << "Click the left button to select/unselect a node, or to pick two nodes for the current operation." << endl;
     cout << " " << endl;
     cout << "A selected node is highlighted as red." << endl;
-
 }
 
 
