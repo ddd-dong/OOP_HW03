@@ -799,7 +799,7 @@ void GRAPH_SYSTEM::handleKeyPressedEvent( unsigned char key )
         break;
     case '3':
         mFlgAutoNodeDeletion = false;
-        createNet_Square(15, 4);
+        createNet_Square(15, 5);
         mSelectedNode = 0;
 
         break;
